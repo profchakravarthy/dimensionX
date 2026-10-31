@@ -1,0 +1,154 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" width="1200" height="760" font-family="'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, monospace">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#090d16"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="rustHeader" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#9a3412"/>
+      <stop offset="100%" stop-color="#ea580c"/>
+    </linearGradient>
+    <linearGradient id="wasmHeader" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#4c1d95"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+    <linearGradient id="jsHeader" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0369a1"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+    <marker id="arrowCyan" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
+    </marker>
+    <marker id="arrowPurple" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#a78bfa"/>
+    </marker>
+    <marker id="arrowOrange" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#fb923c"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="760" rx="14" fill="url(#bgGrad)" stroke="#1e293b" stroke-width="2"/>
+
+  <!-- Title -->
+  <text x="600" y="38" text-anchor="middle" fill="#f8fafc" font-size="22" font-weight="700">dimensionX — End-to-End Rust WebAssembly + JavaScript System Architecture</text>
+  <text x="600" y="60" text-anchor="middle" fill="#94a3b8" font-size="13">100% Pure Rust Core (std only, zero external crates) · Compiled wasm32-unknown-unknown Binary · Zero-Duplication ES2024 Visualizer</text>
+
+  <!-- ==================== TIER 1: RUST CORE ENGINE ==================== -->
+  <rect x="30" y="82" width="1140" height="245" rx="10" fill="#111827" stroke="#f97316" stroke-width="1.8"/>
+  <rect x="30" y="82" width="1140" height="34" rx="10" fill="url(#rustHeader)"/>
+  <text x="50" y="104" fill="#ffffff" font-size="14" font-weight="700">TIER 1 — NATIVE RUST CORE ENGINE (rust-core/src/ · Edition 2021 · 100% std · MIT)</text>
+  <text x="1150" y="104" text-anchor="end" fill="#ffedd5" font-size="12" font-weight="600">15/15 Rust Unit &amp; Perf Tests (lib.rs)</text>
+
+  <!-- Module 1: math.rs -->
+  <rect x="46" y="130" width="265" height="182" rx="8" fill="#1e293b" stroke="#fb923c" stroke-width="1.2"/>
+  <text x="58" y="152" fill="#fdba74" font-size="13" font-weight="700">rust-core/src/math.rs</text>
+  <text x="58" y="172" fill="#e2e8f0" font-size="11.5">• SeededRandom (Mulberry32 + Gaussian)</text>
+  <text x="58" y="191" fill="#e2e8f0" font-size="11.5">• VectorND (R^N algebra, lerp, embed)</text>
+  <text x="58" y="210" fill="#e2e8f0" font-size="11.5">• RotorND (SO(N) Givens plane rotations,</text>
+  <text x="68" y="226" fill="#cbd5e1" font-size="11">Gram-Schmidt reorthogonalize, det=+1)</text>
+  <text x="58" y="246" fill="#e2e8f0" font-size="11.5">• PolytopeND ({p}, Simplex α_k,</text>
+  <text x="68" y="262" fill="#cbd5e1" font-size="11">Hypercube γ_k, Orthoplex β_k)</text>
+  <text x="58" y="282" fill="#e2e8f0" font-size="11.5">• CrossSectionND::slice_polytope</text>
+  <text x="68" y="298" fill="#38bdf8" font-size="11">(exact hyperplane x_d = s intersection)</text>
+
+  <!-- Module 2: config.rs & spacetime.rs -->
+  <rect x="327" y="130" width="265" height="182" rx="8" fill="#1e293b" stroke="#fb923c" stroke-width="1.2"/>
+  <text x="339" y="152" fill="#fdba74" font-size="13" font-weight="700">config.rs &amp; spacetime.rs</text>
+  <text x="339" y="172" fill="#e2e8f0" font-size="11.5">• SimulationConfig (zero hardcoding:</text>
+  <text x="349" y="188" fill="#cbd5e1" font-size="11">D_max, radii, thresholds, rates, seed)</text>
+  <text x="339" y="207" fill="#e2e8f0" font-size="11.5">• get_axioms_for_dimension(target_dim)</text>
+  <text x="339" y="226" fill="#e2e8f0" font-size="11.5">• BoundaryMode (Reflective | Toroidal)</text>
+  <text x="339" y="246" fill="#e2e8f0" font-size="11.5">• SpaceTimeClock (T, δt = 1/60s, α)</text>
+  <text x="339" y="266" fill="#38bdf8" font-size="11.5">• TIME_SCALE_LADDER (0x..0.05x..1000x)</text>
+  <text x="339" y="286" fill="#4ade80" font-size="11.5">• slow_down_time(-) &amp; speed_up_time(+)</text>
+
+  <!-- Module 3: universe.rs -->
+  <rect x="608" y="130" width="335" height="182" rx="8" fill="#1e293b" stroke="#fb923c" stroke-width="1.2"/>
+  <text x="620" y="152" fill="#fdba74" font-size="13" font-weight="700">rust-core/src/universe.rs (DimensionXUniverse)</text>
+  <text x="620" y="172" fill="#e2e8f0" font-size="11.5">• Entities: BeingEntity, InformationPulseEntity</text>
+  <text x="620" y="190" fill="#e2e8f0" font-size="11.5">• Sys 1: step_kinematics_nd (subspace confinement)</text>
+  <text x="620" y="208" fill="#e2e8f0" font-size="11.5">• Sys 2: step_higher_dim_injection (light-cone pulses)</text>
+  <text x="620" y="226" fill="#e2e8f0" font-size="11.5">• Sys 3: step_peer_exchange (upsert_collaboration_link)</text>
+  <text x="620" y="244" fill="#e2e8f0" font-size="11.5">• Sys 4: step_inheritance_mutation (offspring &amp; axioms)</text>
+  <text x="620" y="262" fill="#e2e8f0" font-size="11.5">• Sys 5: step_collaborative_folding (k-D → (k+1)-D)</text>
+  <text x="620" y="280" fill="#e2e8f0" font-size="11.5">• Sys 6: step_dimensional_phasing &amp; O(V) cross-sections</text>
+  <text x="620" y="298" fill="#38bdf8" font-size="11.5">• sample_worldlines() &amp; to_snapshot_json()</text>
+
+  <!-- Module 4: wasm_api.rs -->
+  <rect x="959" y="130" width="195" height="182" rx="8" fill="#1e293b" stroke="#fb923c" stroke-width="1.2"/>
+  <text x="971" y="152" fill="#fdba74" font-size="13" font-weight="700">rust-core/src/wasm_api.rs</text>
+  <text x="971" y="172" fill="#e2e8f0" font-size="11">16 #[no_mangle] extern "C"</text>
+  <text x="971" y="190" fill="#cbd5e1" font-size="10.5">• universe_init / seed_default</text>
+  <text x="971" y="206" fill="#cbd5e1" font-size="10.5">• universe_step / step_ticks</text>
+  <text x="971" y="222" fill="#cbd5e1" font-size="10.5">• universe_set_time_scale</text>
+  <text x="971" y="238" fill="#cbd5e1" font-size="10.5">• universe_slow_down_time</text>
+  <text x="971" y="254" fill="#cbd5e1" font-size="10.5">• universe_speed_up_time</text>
+  <text x="971" y="270" fill="#cbd5e1" font-size="10.5">• universe_set_slice_z</text>
+  <text x="971" y="286" fill="#cbd5e1" font-size="10.5">• universe_set_include_worldlines</text>
+  <text x="971" y="302" fill="#38bdf8" font-size="10.5">• refresh_snapshot / get_ptr</text>
+
+  <!-- Arrows within Tier 1 -->
+  <line x1="311" y1="220" x2="325" y2="220" stroke="#fb923c" stroke-width="1.8" marker-end="url(#arrowOrange)"/>
+  <line x1="592" y1="220" x2="606" y2="220" stroke="#fb923c" stroke-width="1.8" marker-end="url(#arrowOrange)"/>
+  <line x1="943" y1="220" x2="957" y2="220" stroke="#fb923c" stroke-width="1.8" marker-end="url(#arrowOrange)"/>
+
+  <!-- ==================== TIER 2: WEBASSEMBLY BINARY & FFI BRIDGE ==================== -->
+  <rect x="30" y="362" width="1140" height="128" rx="10" fill="#111827" stroke="#8b5cf6" stroke-width="1.8"/>
+  <rect x="30" y="362" width="1140" height="32" rx="10" fill="url(#wasmHeader)"/>
+  <text x="50" y="383" fill="#ffffff" font-size="14" font-weight="700">TIER 2 — WEBASSEMBLY BINARY &amp; LINEAR MEMORY BRIDGE (src/wasm/dimensionx_core.wasm ↔ src/engine/RustWasmBridge.js)</text>
+
+  <rect x="50" y="406" width="510" height="72" rx="8" fill="#1e1b4b" stroke="#a78bfa" stroke-width="1.2"/>
+  <text x="66" y="427" fill="#c4b5fd" font-size="13" font-weight="700">Compiled Binary: src/wasm/dimensionx_core.wasm (wasm32-unknown-unknown)</text>
+  <text x="66" y="447" fill="#e2e8f0" font-size="11.5">• Static SNAPSHOT_BUFFER: Vec&lt;u8&gt; in WebAssembly Linear Memory (wasm.memory.buffer)</text>
+  <text x="66" y="465" fill="#cbd5e1" font-size="11.5">• Zero-copy pointer + byte length handoff: universe_get_snapshot_ptr() &amp; universe_refresh_snapshot()</text>
+
+  <rect x="610" y="406" width="540" height="72" rx="8" fill="#1e1b4b" stroke="#a78bfa" stroke-width="1.2"/>
+  <text x="626" y="427" fill="#c4b5fd" font-size="13" font-weight="700">JS FFI Wrapper: RustWasmUniverse (src/engine/RustWasmBridge.js)</text>
+  <text x="626" y="447" fill="#e2e8f0" font-size="11.5">• Instantiates .wasm via WebAssembly.instantiateStreaming / instantiate</text>
+  <text x="626" y="465" fill="#38bdf8" font-size="11.5">• Decodes UTF-8 JSON snapshot via Uint8Array(wasm.memory.buffer, ptr, len) + TextDecoder</text>
+
+  <line x1="560" y1="442" x2="608" y2="442" stroke="#a78bfa" stroke-width="2.2" marker-end="url(#arrowPurple)"/>
+  <line x1="1056" y1="312" x2="1056" y2="360" stroke="#a78bfa" stroke-width="2.2" marker-end="url(#arrowPurple)"/>
+  <line x1="305" y1="312" x2="305" y2="360" stroke="#a78bfa" stroke-width="2.2" marker-end="url(#arrowPurple)"/>
+
+  <!-- ==================== TIER 3: JAVASCRIPT VISUALIZATION & HUD ==================== -->
+  <rect x="30" y="525" width="1140" height="210" rx="10" fill="#111827" stroke="#0ea5e9" stroke-width="1.8"/>
+  <rect x="30" y="525" width="1140" height="34" rx="10" fill="url(#jsHeader)"/>
+  <text x="50" y="547" fill="#ffffff" font-size="14" font-weight="700">TIER 3 — ZERO-DUPLICATION JAVASCRIPT VISUALIZATION &amp; SPACE-TIME HUD (src/render/ · src/ui/ · src/main.js)</text>
+  <text x="1150" y="547" text-anchor="end" fill="#e0f2fe" font-size="12" font-weight="600">8/8 WASM &amp; Canvas Tests (npm test)</text>
+
+  <!-- ProjectorND.js -->
+  <rect x="46" y="572" width="340" height="148" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.2"/>
+  <text x="58" y="594" fill="#7dd3fc" font-size="13" font-weight="700">src/render/ProjectorND.js</text>
+  <text x="58" y="614" fill="#e2e8f0" font-size="11.5">• Cascaded N-D → 3D perspective fold</text>
+  <text x="68" y="630" fill="#cbd5e1" font-size="11">(preserves exact 2D/3D coords for N ≤ 3)</text>
+  <text x="58" y="650" fill="#e2e8f0" font-size="11.5">• Space-Time Mode: maps Z = -(T - t_s)·s_T</text>
+  <text x="58" y="670" fill="#e2e8f0" font-size="11.5">• 3D → 2D Turntable Camera (yaw, pitch, zoom)</text>
+  <text x="58" y="690" fill="#38bdf8" font-size="11.5">• Computes wDepth for 4D+ spectral edge color</text>
+
+  <!-- SpaceTimeVisualizer.js -->
+  <rect x="406" y="572" width="380" height="148" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.2"/>
+  <text x="418" y="594" fill="#7dd3fc" font-size="13" font-weight="700">src/render/SpaceTimeVisualizer.js</text>
+  <text x="418" y="614" fill="#e2e8f0" font-size="11.5">• Primary 3D/N-D Viewport (#canvas-3d):</text>
+  <text x="428" y="630" fill="#cbd5e1" font-size="11">Flatland z=0 grid, 3D/4D/5D/6D polytopes, pulses,</text>
+  <text x="428" y="646" fill="#cbd5e1" font-size="11">deduplicated peer links, worldlines &amp; N-D axis gizmo</text>
+  <text x="418" y="666" fill="#e2e8f0" font-size="11.5">• 2D Hyperplane Slice Viewport (#canvas-2d):</text>
+  <text x="428" y="682" fill="#cbd5e1" font-size="11">Renders native 2D polygons + Rust-computed</text>
+  <text x="428" y="698" fill="#38bdf8" font-size="11">being.sliceAtZ.orderedPolygon2D cross-sections</text>
+
+  <!-- ControlHUD.js & main.js -->
+  <rect x="806" y="572" width="348" height="148" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.2"/>
+  <text x="818" y="594" fill="#7dd3fc" font-size="13" font-weight="700">src/ui/ControlHUD.js &amp; src/main.js</text>
+  <text x="818" y="614" fill="#e2e8f0" font-size="11.5">• Top Bar: − Slow / + Fast proper-time buttons,</text>
+  <text x="828" y="630" fill="#cbd5e1" font-size="11">0×, +1 δt, 0.25×, 1×, 5×, 20×, 100×, 500× &amp; Warp slider</text>
+  <text x="818" y="650" fill="#e2e8f0" font-size="11.5">• Slice x_2(z) slider → universe.setSliceZ(z)</text>
+  <text x="818" y="670" fill="#e2e8f0" font-size="11.5">• Diff-guarded Being Inspector &amp; Phase Jump buttons</text>
+  <text x="818" y="690" fill="#4ade80" font-size="11.5">• On-demand worldline toggle &amp; 60 FPS rAF loop</text>
+
+  <!-- Arrows Tier 2 to Tier 3 -->
+  <line x1="600" y1="490" x2="600" y2="523" stroke="#38bdf8" stroke-width="2.2" marker-end="url(#arrowCyan)"/>
+  <line x1="880" y1="490" x2="880" y2="523" stroke="#38bdf8" stroke-width="2.2" marker-end="url(#arrowCyan)"/>
+  <line x1="386" y1="646" x2="404" y2="646" stroke="#38bdf8" stroke-width="1.8" marker-end="url(#arrowCyan)"/>
+</svg>
+

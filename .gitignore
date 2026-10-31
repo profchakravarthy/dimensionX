@@ -1,0 +1,7 @@
+# Rust build artifacts (compiled release binary is committed at src/wasm/dimensionx_core.wasm)
+rust-core/target/
+
+# Node / OS artifacts
+node_modules/
+.DS_Store
+*.log

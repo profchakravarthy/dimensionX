@@ -1,0 +1,14 @@
+[package]
+name = "dimensionx-core"
+version = "1.0.0"
+edition = "2021"
+license = "MIT"
+description = "Native N-dimensional space-time mathematics, ECS, and geometric evolution engine for dimensionX"
+
+[lib]
+name = "dimensionx_core"
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+# Zero external runtime dependencies: 100% pure Rust standard library (`std`) for guaranteed MIT compliance.
+

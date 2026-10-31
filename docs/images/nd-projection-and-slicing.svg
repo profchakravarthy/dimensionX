@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" font-family="'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, monospace">
+  <defs>
+    <linearGradient id="bgProj" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#090d16"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <marker id="arrBlue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
+    </marker>
+    <marker id="arrGold" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#f59e0b"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="660" rx="14" fill="url(#bgProj)" stroke="#1e293b" stroke-width="2"/>
+
+  <!-- Title -->
+  <text x="600" y="38" text-anchor="middle" fill="#f8fafc" font-size="21" font-weight="700">Dual-Path N-Dimensional Geometry Pipeline: 3D Cascaded Projection vs. 2D Hyperplane Slicing</text>
+  <text x="600" y="60" text-anchor="middle" fill="#94a3b8" font-size="13">How a single N-D BeingEntity in Rust feeds both the Left 3D Omniscient Viewport and the Right 2D Flatland Slice Viewport</text>
+
+  <!-- Source Box: Rust N-D Polytope World State -->
+  <rect x="260" y="82" width="680" height="94" rx="10" fill="#1e293b" stroke="#fb923c" stroke-width="1.8"/>
+  <text x="600" y="106" text-anchor="middle" fill="#fdba74" font-size="14" font-weight="700">Rust Core Source: PolytopeND::transform_vertices (rust-core/src/math.rs &amp; universe.rs)</text>
+  <text x="600" y="128" text-anchor="middle" fill="#e2e8f0" font-size="12">Local k-D Polytope (vertices v_local ∈ R^k, edges E, facets F) + Position p ∈ R^N + Orientation R ∈ SO(N)</text>
+  <text x="600" y="150" text-anchor="middle" fill="#38bdf8" font-size="12" font-weight="600">World Vertex Transform: v_world = p + R · embed(v_local, N)   (for each vertex in R^N, N ≤ 6)</text>
+
+  <!-- Split Arrows -->
+  <path d="M 430 176 L 430 202 L 295 202 L 295 224" fill="none" stroke="#38bdf8" stroke-width="2.2" marker-end="url(#arrBlue)"/>
+  <path d="M 770 176 L 770 202 L 905 202 L 905 224" fill="none" stroke="#f59e0b" stroke-width="2.2" marker-end="url(#arrGold)"/>
+
+  <!-- ==================== LEFT PATH: 3D/N-D VIEWPORT ==================== -->
+  <rect x="35" y="226" width="525" height="405" rx="10" fill="#111827" stroke="#0ea5e9" stroke-width="1.8"/>
+  <rect x="35" y="226" width="525" height="32" rx="10" fill="#0284c7"/>
+  <text x="55" y="247" fill="#ffffff" font-size="13.5" font-weight="700">PATH A — Left Viewport: Cascaded N-D → 3D → 2D Projection</text>
+
+  <!-- Step A1 -->
+  <rect x="55" y="274" width="485" height="98" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.2"/>
+  <text x="70" y="295" fill="#7dd3fc" font-size="12.5" font-weight="700">1. Cascaded Higher-D Fold: ProjectorND.projectNDTo3D (ProjectorND.js)</text>
+  <text x="70" y="315" fill="#e2e8f0" font-size="11.5">• If dim(v) ≤ 3: Exact passthrough X = v[0], Y = v[1], Z = v[2] (zero distortion)</text>
+  <text x="70" y="334" fill="#e2e8f0" font-size="11.5">• If dim(v) ≥ 4: For d = N-1 down to 3, perspective scale s_d = D_4 / (D_4 - x_d)</text>
+  <text x="70" y="353" fill="#cbd5e1" font-size="11">  Folds x_d (w, v, u) into (X, Y, Z) with oblique basis offset + records wDepth = x_3</text>
+
+  <!-- Step A2 -->
+  <rect x="55" y="392" width="485" height="94" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.2"/>
+  <text x="70" y="413" fill="#7dd3fc" font-size="12.5" font-weight="700">2. Space-Time Mode &amp; Turntable Camera: ProjectorND.project3DTo2D</text>
+  <text x="70" y="433" fill="#e2e8f0" font-size="11.5">• Optional Space-Time Mode: maps Z ← Z - (T_universal - t_sample) · s_time</text>
+  <text x="70" y="452" fill="#e2e8f0" font-size="11.5">• Camera Orbit: rotates (X, Y, Z) by yaw θ (X-Y plane) and pitch φ (Y-Z plane)</text>
+  <text x="70" y="471" fill="#38bdf8" font-size="11">• Screen Projection: u = W/2 + x_cam · (F / depth),  v = H/2 - y_cam · (F / depth)</text>
+
+  <!-- Step A3 -->
+  <rect x="55" y="506" width="485" height="106" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.2"/>
+  <text x="70" y="527" fill="#7dd3fc" font-size="12.5" font-weight="700">3. Canvas 3D Rendering: SpaceTimeVisualizer.render3DViewport</text>
+  <text x="70" y="547" fill="#e2e8f0" font-size="11.5">• Draws z=0 Flatland grid, z=sliceZ plane, and N-D axis gizmo (X,Y,Z,W,V,U)</text>
+  <text x="70" y="566" fill="#e2e8f0" font-size="11.5">• Renders translucent facets (for M ≤ 4), spectral w-depth edges &amp; vertex nodes</text>
+  <text x="70" y="585" fill="#e2e8f0" font-size="11.5">• Renders vertical pulse light-cones, expanding wavefront rings &amp; peer beams</text>
+  <text x="70" y="602" fill="#4ade80" font-size="11">• Supports click hit-testing within 26px screen radius to select any being</text>
+
+  <line x1="297" y1="372" x2="297" y2="390" stroke="#38bdf8" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+  <line x1="297" y1="486" x2="297" y2="504" stroke="#38bdf8" stroke-width="1.8" marker-end="url(#arrBlue)"/>
+
+  <!-- ==================== RIGHT PATH: 2D HYPERPLANE SLICE VIEWPORT ==================== -->
+  <rect x="640" y="226" width="525" height="405" rx="10" fill="#111827" stroke="#f59e0b" stroke-width="1.8"/>
+  <rect x="640" y="226" width="525" height="32" rx="10" fill="#d97706"/>
+  <text x="660" y="247" fill="#ffffff" font-size="13.5" font-weight="700">PATH B — Right Viewport: Exact Hyperplane Slicing (x_2 = z_slice)</text>
+
+  <!-- Step B1 -->
+  <rect x="660" y="274" width="485" height="98" rx="8" fill="#1e293b" stroke="#f59e0b" stroke-width="1.2"/>
+  <text x="675" y="295" fill="#fcd34d" font-size="12.5" font-weight="700">1. Bounded O(V) Cascaded Slicing: compute_being_cross_section (Rust)</text>
+  <text x="675" y="315" fill="#e2e8f0" font-size="11.5">• O(1) Bounding-Sphere Pre-Check: skips if |pos[2] - z_slice| &gt; 1.45 · radius</text>
+  <text x="675" y="334" fill="#e2e8f0" font-size="11.5">• For 4D/5D/6D beings (d &gt; 3): slices higher axes x_d = 0, deduplicates points</text>
+  <text x="675" y="353" fill="#cbd5e1" font-size="11">  (≤ 24 verts), and forms O(V) cyclic + antipodal-chord hull edges (≤ 2·V edges)</text>
+
+  <!-- Step B2 -->
+  <rect x="660" y="392" width="485" height="94" rx="8" fill="#1e293b" stroke="#f59e0b" stroke-width="1.2"/>
+  <text x="675" y="413" fill="#fcd34d" font-size="12.5" font-weight="700">2. Edge-Hyperplane Intersection: CrossSectionND::slice_polytope (Rust)</text>
+  <text x="675" y="433" fill="#e2e8f0" font-size="11.5">• For every edge (v_a, v_b) straddling x_2 = z_slice: t = (z_slice - z_a) / (z_b - z_a)</text>
+  <text x="675" y="452" fill="#e2e8f0" font-size="11.5">• Interpolates exact intersection point p(t) = v_a + t · (v_b - v_a) for t ∈ [0, 1]</text>
+  <text x="675" y="471" fill="#fbbf24" font-size="11">• Deduplicates &amp; sorts points counter-clockwise by atan2(y - c_y, x - c_x)</text>
+
+  <!-- Step B3 -->
+  <rect x="660" y="506" width="485" height="106" rx="8" fill="#1e293b" stroke="#f59e0b" stroke-width="1.2"/>
+  <text x="675" y="527" fill="#fcd34d" font-size="12.5" font-weight="700">3. Canvas 2D Slice Rendering: SpaceTimeVisualizer.render2DSliceViewport</text>
+  <text x="675" y="547" fill="#e2e8f0" font-size="11.5">• When |z_slice| &lt; 0.65: draws native 2D polygons {p} directly from world vertices</text>
+  <text x="675" y="566" fill="#e2e8f0" font-size="11.5">• For 3D–6D beings: draws being.sliceAtZ.orderedPolygon2D as a dashed glowing</text>
+  <text x="675" y="585" fill="#cbd5e1" font-size="11">  2D cross-section polygon (e.g. "SLICE #20 (4D→2D: 5-gon)") as they pass z_slice</text>
+  <text x="675" y="602" fill="#4ade80" font-size="11">• Slider #slice-z-slider updates viewer_slice_z in Rust via universe_set_slice_z</text>
+
+  <line x1="902" y1="372" x2="902" y2="390" stroke="#f59e0b" stroke-width="1.8" marker-end="url(#arrGold)"/>
+  <line x1="902" y1="486" x2="902" y2="504" stroke="#f59e0b" stroke-width="1.8" marker-end="url(#arrGold)"/>
+</svg>
+
