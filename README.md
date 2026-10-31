@@ -12,10 +12,12 @@ Beings begin in a 2D Flatland hyperplane ($z = 0$), exchange geometric axioms wi
 
 ---
 
-## Documentation Folder (`docs/`)
+## Documentation Folder (`docs/`) & Walkthrough Video (`media/`)
 
-Full user and technical documentation—complete with live observatory screenshots and graphical vector architecture diagrams—is located in the [`docs/`](./docs/) folder:
+Full user and technical documentation—complete with live observatory screenshots, graphical vector architecture diagrams, and the **3-minute 35-second end-to-end Agentic SDLC development & observatory video**—is included in the repository:
 
+0. **[Agentic SDLC & Live Observatory Walkthrough Video (`media/dimensionX_Agentic_SDLC_1080p.mp4`)](./media/dimensionX_Agentic_SDLC_1080p.mp4)**
+   - Complete `3m 35s` 1080p video chronicling all 13 stages of building `dimensionX` with Gemini 4 Argon and MiniMax (`mcode-stack`) skills—from initial architecture and subagent orchestration, to the mid-flight pivot from JS to Rust WebAssembly, independent code reviews, and live 60 FPS multi-dimensional evolution.
 1. **[User Guide & Space-Time Observatory Manual (`docs/USER_GUIDE.md`)](./docs/USER_GUIDE.md)**
    - Annotated screenshots of every panel and viewport mode (`N-D Spatial Hyper-Strata`, `Space-Time Worldline Corkscrew Mode`, and `2D Hyperplane Cross-Section Slicing`).
    - Detailed guide to every button, slider, telemetry counter, inspector readout, dimensional phase-jump control, keyboard shortcut, and URL parameter.

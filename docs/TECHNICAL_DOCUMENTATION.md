@@ -37,6 +37,13 @@
    - All vectors (`VectorND`) and rotation matrices (`RotorND`) are dynamically sized for any ambient dimension $N \ge 1$.
    - All simulation parameters are injected via `SimulationConfig` (`rust-core/src/config.rs`).
 
+### End-to-End Agentic SDLC Development Video (`media/dimensionX_Agentic_SDLC_1080p.mp4`)
+The complete development trajectory and live observatory verification are captured in **[`../media/dimensionX_Agentic_SDLC_1080p.mp4`](../media/dimensionX_Agentic_SDLC_1080p.mp4)** (`3m 35s`), with chapter cards mapped to each architectural component in this document:
+- **Stages 01–03:** Formal `ARCHITECTURE.md` & `REQUIREMENTS.md` specification, MiniMax `mcode-stack` subagent split (`subagent-split-check`), and initial prototype verification.
+- **Stages 04–08:** Architectural evaluation (C++ vs. Rust + JS) and mid-flight migration of `math.rs`, `config.rs`, `spacetime.rs`, `universe.rs`, and `wasm_api.rs` to 100% pure Rust compiled to `src/wasm/dimensionx_core.wasm` ([Sections 2–7](#2-rust-core-module-1-n-dimensional-mathematics-rust-coresrcmathrs)).
+- **Stages 09–11:** Zero-duplication audit removing legacy JS math/systems, `ProjectorND` + `SpaceTimeVisualizer` integration ([Section 8](#8-visualization-pipeline-projectorndjs-spacetimevisualizerjs--controlhudjs)), and clean-context `independent-review` verification ([Section 10](#10-verification--automated-test-matrix)).
+- **Stages 12–13:** Live 60 FPS proper-time execution (`REQ-PERF-001`, [Section 9](#9-performance-engineering--frame-budget-guarantees-req-perf-001)), automated documentation generation, and GitHub release.
+
 ### Repository Directory Structure
 ```text
 dimensionX/

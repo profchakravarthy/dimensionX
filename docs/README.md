@@ -1,6 +1,11 @@
-# dimensionX Documentation Index
+# dimensionX Documentation & Media Index
 
-Welcome to the **dimensionX** documentation directory (`docs/`). All guides, real observatory screenshots, and vector architectural/mathematical diagrams are organized below:
+Welcome to the **dimensionX** documentation directory (`docs/`). All guides, real observatory screenshots, vector architectural/mathematical diagrams, and the end-to-end development walkthrough video (`../media/`) are organized below:
+
+## 0. End-to-End Agentic SDLC & Observatory Walkthrough Video (`media/`)
+- **[`../media/dimensionX_Agentic_SDLC_1080p.mp4`](../media/dimensionX_Agentic_SDLC_1080p.mp4)** — 3-minute 35-second 1080p video showing the complete Agentic SDLC process and live **dimensionX** Space-Time Observatory in action across 13 chaptered stages (requirements & MiniMax subagent split $\to$ JS prototype $\to$ mid-flight pivot to Rust WebAssembly + JS $\to$ clean-context independent reviews $\to$ live 60 FPS multi-dimensional evolution).
+
+---
 
 ## 1. User Guide & Observatory Manual
 - **[`USER_GUIDE.md`](./USER_GUIDE.md)** — Complete visual guide to the **dimensionX** Dual-Viewport Space-Time Observatory, with real screenshots and detailed explanations of every viewport visual element, top-bar time control (`− Slow`, `+ Fast`, slow-motion, hyper-warp), 2D hyperplane slice scanner, Higher-D intervention buttons, Selected Being Inspector, Dimensional Phase Jump controls, and keyboard shortcuts.

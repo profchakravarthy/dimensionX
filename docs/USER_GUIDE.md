@@ -29,6 +29,8 @@ npm run serve
 
 Then open **http://127.0.0.1:4173** in your browser. The browser loads the compiled Rust WebAssembly simulation engine (`src/wasm/dimensionx_core.wasm`) and displays the status badge **`CORE: RUST WASM (N-D ACTIVE)`** in the top-left header.
 
+> **Video Walkthrough:** You can also watch the full **3m 35s Observatory & Agentic SDLC Walkthrough Video** at [`../media/dimensionX_Agentic_SDLC_1080p.mp4`](../media/dimensionX_Agentic_SDLC_1080p.mp4) (Stage 12 demonstrates the live 60 FPS Space-Time Observatory, 3D/2D viewports, pulse injection, and dimensional phasing in real proper time).
+
 ---
 
 ## 2. Observatory Layout at a Glance
